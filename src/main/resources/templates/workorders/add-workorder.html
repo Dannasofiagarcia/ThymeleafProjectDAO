@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Add Work order</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+	integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="../css/shards.min.css">
+</head>
+<body>
+	<div class="container my-5">
+		<h2 class="mb-5">Add new work order</h2>
+		<div class="row">
+			<div class="col-md-6">
+				<form action="#" th:action="@{/workorder/add/}"
+					th:object="${workorder}" method="post">
+					<div class="row">
+
+						<div class="form-group col-md-6">
+							<label for="startdate" class="col-form-label">Start date</label>
+							<input type="date" th:field="*{startdate}" class="form-control"
+								id="startdate" placeholder="Start date"> <span
+								th:if="${#fields.hasErrors('startdate')}"
+								th:errors="*{startdate}" class="text-danger"></span>
+						</div>
+
+						<div class="form-group col-md-6">
+							<label for="duedate" class="col-form-label">Due date</label> <input
+								type="date" th:field="*{duedate}" class="form-control"
+								id="duedate" placeholder="Due date"> <span
+								th:if="${#fields.hasErrors('duedate')}" th:errors="*{duedate}"
+								class="text-danger"></span>
+						</div>
+
+						<div class="form-group col-md-6">
+							<label for="enddate" class="col-form-label">End date</label> <input
+								type="date" th:field="*{enddate}" class="form-control"
+								id="enddate" placeholder="End date"> <span
+								th:if="${#fields.hasErrors('enddate')}" th:errors="*{enddate}"
+								class="text-danger"></span>
+						</div>
+
+						<div class="form-group col-md-6">
+							<label for="modifieddate" class="col-form-label">Modified
+								date</label> <input type="date" th:field="*{modifieddate}"
+								class="form-control" id="modifieddate"
+								placeholder="Modified date"> <span
+								th:if="${#fields.hasErrors('modifieddate')}"
+								th:errors="*{modifieddate}" class="text-danger"></span>
+						</div>
+
+						<div class="form-group col-md-6">
+							<label for="orderqty" class="col-form-label">Order
+								quantity</label> <input type="number" th:field="*{orderqty}"
+								class="form-control" id="orderqty" placeholder="11"> <span
+								th:if="${#fields.hasErrors('orderqty')}" th:errors="*{orderqty}"
+								class="text-danger"></span>
+						</div>
+
+						<div class="form-group col-md-6">
+							<label for="scrappedqty" class="col-form-label">Scrapped
+								quantity</label> <input type="number" th:field="*{scrappedqty}"
+								class="form-control" id="scrappedqty" placeholder="2"> <span
+								th:if="${#fields.hasErrors('scrappedqty')}"
+								th:errors="*{scrappedqty}" class="text-danger"></span>
+						</div>
+
+						<div class="form-group col-md-6">
+							<label for="scrapreason" class="col-form-label">Scrap
+								reason</label> <select class="form-control-range"
+								th:field="*{scrapreason}">
+								<option th:each="sr : ${scrapreasons}"
+									th:value="${sr.scrapreasonid}" class="form-control"
+									th:text="${sr.name}" th:selected="${workorder.scrapreason=sr}"></option>
+							</select> <span th:if="${#fields.hasErrors('scrapreason')}"
+								th:errors="*{scrapreason}" class="text-danger"></span>
+						</div>
+
+						<div class="form-group col-md-6">
+							<label for="product" class="col-form-label">Product</label> <select
+								class="form-control-range" th:field="*{product}">
+								<option th:each="product : ${products}"
+									th:value="${product.productid}" class="form-control"
+									th:text="${product.name}"
+									th:selected="${workorder.product=product}"></option>
+							</select> <span th:if="${#fields.hasErrors('product')}"
+								th:errors="*{product}" class="text-danger"></span>
+						</div>
+
+						<div></div>
+					</div>
+					<div class="row">
+						<div class="col-md-5 mt-3">
+							<input type="submit" name="action" class="btn btn-primary"
+								value="Add work order">
+						</div>
+						<div class="col-md-3 mt-3">
+							<input type="reset" class="btn btn-secondary" value="Reset">
+						</div>
+						<div class="col-md-3 mt-3">
+							<input type="submit" name="action" class="btn btn-secondary"
+								value="Cancel">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

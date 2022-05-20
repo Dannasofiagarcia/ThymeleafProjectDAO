@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Sub-categories</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v6.1.1/css/all.css">
+<link rel="stylesheet" href="../css/shards.min.css">
+</head>
+<body>
+	<div th:switch="${subcategories}" class="container my-5">
+		<div class="row">
+			<div class="col-md-10">
+				<h2 th:case="null">No sub-categories yet!</h2>
+				<div th:case="*">
+					<h2 class="my-5">Sub-categories</h2>
+					<table class="table table-striped table-responsive-md">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>Name</th>
+								<th>Modified date</th>
+								<th>Category</th>
+								<th>Edit</th>
+								<th>Delete</th>
+
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="productsubcategory : ${subcategories}">
+								<td class="text-info"
+									th:text="${productsubcategory.productsubcategoryid}"></td>
+								<td class="text-info" th:text="${productsubcategory.name}"></td>
+								<td class="text-info"
+									th:text="${productsubcategory.modifieddate}"></td>
+
+								<td><a
+									th:href="@{/category/{id}(id=${productsubcategory.productcategory.productcategoryid})}"
+									class="btn btn-primary"><i class="fa-solid fa-folder"></i></a></td>
+
+								<td><a
+									th:href="@{/subcategory/edit/{id}(id=${productsubcategory.productsubcategoryid})}"
+									class="btn btn-primary"><i
+										class="fa-solid fa-pen-to-square"></i></a></td>
+
+								<td><a
+									th:href="@{/subcategory/delete/{id}(id=${productsubcategory.productsubcategoryid})}"
+									class="btn btn-primary"><i class="fa-solid fa-delete-left"></i></a></td>
+
+
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<p class="my-5">
+
+					<a href="/product/add/" class="btn btn-primary"><i
+						class="fa-solid fa-cart-shopping"></i> Add product</a>
+				</p>
+
+				<a href="/workorder/add/" class="btn btn-primary"><i
+					class="fa-solid fa-clipboard"></i> Add work order</a>
+				</p>
+				<p class="my-5">
+					<a href="/category/add/" class="btn btn-primary"><i
+						class="fa-solid fa-folder"></i> Add category</a>
+
+				</p>
+
+				<p class="my-5">
+					<a href="/subcategory/add" class="btn btn-primary"><i
+						class="fa-solid fa-folder-tree"></i> Add sub-category</a>
+
+
+				</p>
+			</div>
+		</div>
+		<p>
+			<a href="/"><i class="fas fa-home ml-2"></i> Go back to main</a>
+		</p>
+	</div>
+</body>
+</html>

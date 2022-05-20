@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>All about</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v6.1.1/css/all.css"
+	integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="../css/shards.min.css">
+</head>
+<body>
+	<div th:switch="${login}" class="container my-5">
+		<div class="row">
+			<div class="col-md-6">
+				<h2 th:case="null">All about!</h2>
+
+				<p>
+					<a href="/product/"><i class="fa-solid fa-cart-shopping ml-2"></i>
+						Products</a>
+				</p>
+				<p>
+					<a href="/workorder/"><i class="fa-solid fa-clipboard ml-2"></i>
+						Work orders</a>
+				</p>
+				<p>
+					<a href="/category/"><i class="fa-solid fa-folder ml-2"></i>
+						Categories</a>
+				</p>
+				<p>
+					<a href="/subcategory/"><i class="fa-solid fa-folder-tree ml-2"></i>
+						Sub-categories</a>
+				</p>
+
+
+				<a href="/logout" class="btn btn-primary">Logout</a> <i
+					class="fal fa-dolly-flatbed"></i>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>
